@@ -7,7 +7,7 @@ using WebApplication1.Entities;
 
 namespace WebApplication1.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BookController : ControllerBase
@@ -92,7 +92,7 @@ namespace WebApplication1.Controllers
 
         // DELETE: api/Book/5
         [HttpDelete("{id}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles ="admin")]
+        [Authorize(Roles ="admin")]
         public async Task<IActionResult> DeleteBook(int id)
         {
             var book = await _context.Books.FindAsync(id);
